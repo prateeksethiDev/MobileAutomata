@@ -1,0 +1,10 @@
+2021-02-18 06:52:45,695 - rootLogger - INFO - Loaded the following properties TimeOut :100 RetryCount :5
+2021-02-18 06:53:02,348 - rootLogger - INFO - Clicked on the objectBy.id: Alert Views
+2021-02-18 06:53:12,344 - rootLogger - INFO - Clicked on the objectBy.xpath: //XCUIElementTypeButton[@name='UICatalog']
+2021-02-18 06:53:13,345 - rootLogger - INFO - Clicked on the objectBy.id: Date Picker
+2021-02-18 06:53:26,540 - rootLogger - INFO - Clicked on the objectBy.xpath: //XCUIElementTypeButton[@name='UICatalog']
+2021-02-18 06:53:27,546 - rootLogger - INFO - Clicked on the objectBy.id: Action Sheets
+2021-02-18 06:53:28,186 - rootLogger - INFO - The element By.id: Other is displayed
+2021-02-18 06:53:28,692 - rootLogger - INFO - Clicked on the objectBy.id: Other
+2021-02-18 06:53:29,392 - rootLogger - INFO - Clicked on the objectBy.id: Safe Choice
+2021-02-18 06:53:29,786 - rootLogger - INFO - The element By.id: Safe Choice is not displayed

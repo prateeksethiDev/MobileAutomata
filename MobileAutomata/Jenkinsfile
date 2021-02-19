@@ -28,7 +28,7 @@ Please find the the attached test execution report for project: $PROJECT_NAME - 
 
 Build url is : $BUILD_URL
 
-''', compressLog: true, subject: '[$BUILD_STATUS] - $PROJECT_NAME - BUILD# - $BUILD_NUMBER', to: 'prateeksethiDev@gmail.com'
+''', compressLog: true, subject: '[$BUILD_STATUS] - $PROJECT_NAME - BUILD# - $BUILD_NUMBER', to: 'prateeksethidev@gmail.com'
       }
     }
     

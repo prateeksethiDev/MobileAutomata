@@ -1,7 +1,7 @@
-pipeline
+pipeline{
 agent any
 stages {
-  try {
+  
     stage("Cleanup Workspace") {
       steps {
         deleteDir()
@@ -24,10 +24,5 @@ stages {
         sh 'mvn clean install test'
       }
     }
-  }
-  catch(err) {
-    emailext(
-    to: 'prateeksethiDev@gmail.com', subject: "${env.JOB_NAME} (#${env.BUILD_NUMBER}) failed", body: "Build URL: ${env.BUILD_URL}\n\nBuild Result: ${currentBuild.result}\n\nChanges:${currentBuild.changeSets}", attachLog: true, )
-    throw err
   }
 }

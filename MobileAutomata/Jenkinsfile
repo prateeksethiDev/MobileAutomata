@@ -10,31 +10,16 @@ pipeline {
     stage("Checkout MobileAutomata") {
       steps {
         git branch: 'master',
-        changelog: true,
-        poll: true,
         url: 'https://github.com/prateeksethiDev/MobileAutomata.git',
-        credentialsId: GitDevAccount
+        credentialsId: 'GitDevAccount'
       }
     }
     stage("Build and run tests") {
       steps {
-        sh 'mvn clean install test'
+        echo 'Running Test Automation'
+    sh label: '', script: 'mvn -f MobileAutomata/pom.xml clean test'
       }
     }
-    stage('email') {
-      steps {
-        emailext attachLog: true,
-        body: '''Hello Admin,
-
-Please find the the attached test execution report for project: $PROJECT_NAME - BUILD# - $BUILD_NUMBER
-
-Build url is : $BUILD_URL
-
-''',
-        compressLog: true,
-        subject: '[$BUILD_STATUS] - $PROJECT_NAME - BUILD# - $BUILD_NUMBER',
-        to: 'prateeksethiDev@gmail.com'
-      }
-    }
+    
   }
 }

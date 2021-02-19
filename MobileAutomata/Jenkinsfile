@@ -1,29 +1,33 @@
-#!groovy
 pipeline
 agent any
-stages
- {
-    try {
-            stage("Cleanup Workspace"){
-                deleteDir()
-            }
-            stage("Checkout MobileAutomata"){
-                git branch: 'master', changelog: true, poll: true, url: 'https://github.com/prateeksethiDev/MobileAutomata.git'
-            }
-           stage("Build and run tests"){
-                env.JAVA_HOME="${tool 'Java_Jenkins_JDK8u112'}"
-                env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-                sh 'java -version'
-                sh 'mvn clean install test'
-             }
-        }
-        catch (err) {
-            emailext (
-                to: 'prateeksethiDev@gmail.com',
-                subject: "${env.JOB_NAME} (#${env.BUILD_NUMBER}) failed",
-                body: "Build URL: ${env.BUILD_URL}\n\nBuild Result: ${currentBuild.result}\n\nChanges:${currentBuild.changeSets}",
-                attachLog: true,
-            )
-            throw err
-        }
+stages {
+  try {
+    stage("Cleanup Workspace") {
+      steps {
+        deleteDir()
+      }
+    }
+    stage("Checkout MobileAutomata") {
+      steps {
+        git branch: 'master',
+        changelog: true,
+        poll: true,
+        url: 'https://github.com/prateeksethiDev/MobileAutomata.git',
+        credentialsId: GitDevAccount
+      }
+    }
+    stage("Build and run tests") {
+      steps {
+        env.JAVA_HOME = "${tool 'Java_Jenkins_JDK8u112'}"
+        env.PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
+        sh 'java -version'
+        sh 'mvn clean install test'
+      }
+    }
+  }
+  catch(err) {
+    emailext(
+    to: 'prateeksethiDev@gmail.com', subject: "${env.JOB_NAME} (#${env.BUILD_NUMBER}) failed", body: "Build URL: ${env.BUILD_URL}\n\nBuild Result: ${currentBuild.result}\n\nChanges:${currentBuild.changeSets}", attachLog: true, )
+    throw err
+  }
 }

@@ -17,7 +17,7 @@ pipeline {
     stage("Build and run tests") {
       steps {
         echo 'Running Test Automation'
-    sh label: '', script: 'mvn clean test'
+    sh label: '', script: 'mvn -f ./pom.xml mvn clean test'
       }
     }
     

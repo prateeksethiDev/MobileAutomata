@@ -1,21 +1,3 @@
-node{
-    stage('SCM checkout for Automation Tests')
-    git credentialsId: '35f9bdd0-3694-4c8f-be9b-8c8350bcb1e6', url: 'https://github.com/prateekSethiQA/TestAutomation_Repo'
-    stage('Automation Tests Execution')
-    echo 'Running Test Automation'
-    sh label: '', script: 'mvn clean test'
-    stage('email')
-    {emailext attachLog: true, body: '''Hello Admin,
-
-Please find the the attached test execution report for project: $PROJECT_NAME - BUILD# - $BUILD_NUMBER
-
-Build url is : $BUILD_URL
-
-''', compressLog: true, subject: '[$BUILD_STATUS] - $PROJECT_NAME - BUILD# - $BUILD_NUMBER', to: 'prateeksethi2106@gmail.com'}
-}
-
-
-
 pipeline {
   agent any
   stages {

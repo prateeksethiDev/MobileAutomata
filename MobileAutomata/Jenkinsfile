@@ -10,8 +10,6 @@ pipeline {
     stage("Checkout MobileAutomata") {
       steps {
         git branch: 'master',
-        changelog: true,
-        poll: true,
         url: 'https://github.com/prateeksethiDev/MobileAutomata.git',
         credentialsId: GitDevAccount
       }

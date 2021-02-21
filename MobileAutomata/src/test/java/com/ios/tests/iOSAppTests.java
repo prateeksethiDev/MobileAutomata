@@ -48,6 +48,6 @@ public class iOSAppTests {
 	@Test(priority=3)
 	public void testActionSheets() {
 		homePage.clickOnActionSheets();
-		homePage.performActionOnActionSheetsOptions();
+		//homePage.performActionOnActionSheetsOptions();
 	}
 }

@@ -17,11 +17,11 @@ HelloCommandBase caller=null;
 	
 	private By linksOnHomePage=By.xpath("//XCUIElementTypeStaticText");
 	private By alertViewLink=By.id("Alert Views");
-	private By alertlinkBack=By.xpath("//XCUIElementTypeButton[@name='UICatalog']");
+	private By alertlinkBack=By.xpath("//XCUIElementTypeButton[@name='UIKitCatalog']");
 	private By datePickerLink=By.id("Date Picker");
-	private By datePickerWheel=By.xpath("//XCUIElementTypePickerWheel");
-	private By actionSheetLink =By.id("Action Sheets");
-	private By actionSheetsOtherLink=By.id("Other");
+	private By datePickerWheel=By.id("Date and Time Picker");
+	private By activityIndicatorstLink =By.id("Activity Indicators");
+	private By activityIndicatorsProgressSpinner=By.xpath("//XCUIElementTypeActivityIndicator[@name=\"In progress\"])[1]");
 	private By actionSheetOptions=By.id("Safe Choice");
 	
 	public int countNumberOfLinksOnHomePage() {
@@ -46,33 +46,33 @@ HelloCommandBase caller=null;
 	}
 	
 	public void extractAndSetCurrentDate() throws InterruptedException {
-		List<WebElement> list=caller.extractCurrentdatefromDatePicker(datePickerWheel);
-		
-		for(int index=0;index<list.size();index++) {
-			System.out.println(list.get(index).getAttribute("value"));
-		}
-		list.get(0).sendKeys("Tue Feb 16");
-		list.get(0).sendKeys(Keys.TAB);
-		
-		list.get(1).sendKeys("10");
-		list.get(1).sendKeys(Keys.TAB);
-		
-		list.get(2).sendKeys("09");
-		list.get(2).sendKeys(Keys.TAB);
-		
-		list.get(3).sendKeys("AM");
-		
-		Thread.sleep(9000);
+//		List<WebElement> list = caller.extractCurrentdatefromDatePicker(datePickerWheel);
+//
+//		for (int index = 0; index < list.size(); index++) {
+//			System.out.println(list.get(index).getAttribute("value"));
+//		}
+//		list.get(0).sendKeys("Tue Feb 16");
+//		list.get(0).sendKeys(Keys.TAB);
+//
+//		list.get(1).sendKeys("10");
+//		list.get(1).sendKeys(Keys.TAB);
+//
+//		list.get(2).sendKeys("09");
+//		list.get(2).sendKeys(Keys.TAB);
+//
+//		list.get(3).sendKeys("AM");
+//
+//		Thread.sleep(9000);
 		caller.click(alertlinkBack);
 	}
 
 	public void clickOnActionSheets() {
-		caller.click(actionSheetLink);
-		caller.verifyElementPresent(actionSheetsOtherLink);
+		caller.click(activityIndicatorstLink);
+		//caller.verifyElementPresent(activityIndicatorsProgressSpinner);
 	}
 	
 	public void performActionOnActionSheetsOptions() {
-		caller.click(actionSheetsOtherLink);
+		//caller.click(actionSheetsOtherLink);
 		caller.click(actionSheetOptions);
 		caller.checkElementNotPresent(actionSheetOptions);
 	}

@@ -147,13 +147,14 @@ protected static PropertyFileReader handler=null;
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
 		if (application.contains("UICatalog")) {
-			//capabilities.setCapability("app", System.getProperty("user.dir") + "/apps/ios/UICatalog.app");
-			capabilities.setCapability("bundleId", "com.example.apple-samplecode.UICatalog");
+			capabilities.setCapability("app", System.getProperty("user.dir") + "/apps/ios/UIKitCatalog.app");
+			//capabilities.setCapability("bundleId", "com.example.apple-samplecode.UICatalog");
 			capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, getPlatform());
 			capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, getPlatformVersion());
 			capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, getAutomationName());
 			capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, getDeviceName());
 			capabilities.setCapability("clearSystemFiles",true);
+			capabilities.setCapability("showXcodeLog", true);
 			
 		} else {
 			// To implement the Logger

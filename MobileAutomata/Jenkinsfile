@@ -1,14 +1,25 @@
 pipeline {
   agent any
+  //Parameterize the build
+  parameters {
+  	choice (name :'VERSION',choices:['1.1.0','1.2.0','1.3.0'], description:'The version of automation code')
+    booleanParam(name: 'RunPreCleanup', defaultValue: true, description: 'To cleanup the Jenkins workspace') 
+  }
+  
   stages {
-
     stage("Cleanup Workspace") {
+     when{
+          expression {
+             params.RunPreCleanup
+          }     
+      }  
       steps {
         deleteDir()
       }
     }
     stage("Checkout MobileAutomata") {
       steps {
+      echo 'deploying the version: ${params.VERSION}'
         git branch: 'master',
         url: 'https://github.com/prateeksethiDev/MobileAutomata.git',
         credentialsId: 'GitDevAccount'
